@@ -1,4 +1,4 @@
-.head-window {width: 90%; height: 120px; background-image:url("bg.jpg"); text-align: center; font-size: 40px; color: yellow; margin: auto; padding-top: 40px; border-radius: 10px;}
+.head-window {width: 90%; height: 120px; background-image:url("../img/bg.jpg"); text-align: center; font-size: 40px; color: yellow; margin: auto; padding-top: 40px; border-radius: 10px;}
 
 .body-window {width: 90%; height: 700px; margin: auto;}
 
