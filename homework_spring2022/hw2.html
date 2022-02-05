@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>Homework #2</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.block {
+  display: block;
+  width: 60%;
+  border: none;
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+.divInput {
+  margin-bottom: 10px;
+}
+.labelInput {
+  display: inline-block;
+  width: 250px;
+}
+	  
+</style>
+</head>
+<body>
+<center>
+<h3> Homework #2 </h3>
+<div style="width:60%">
+<h4>Create a simple form to collect user's data. <br>
+For example, first name, last name, gender, phone number, email address, message, etc. <br> 
+Bonus: style the page and add validation.</h4>
+</div>
+</center>
+<hr>
+<center>
+
+<div style="width:80%">
+<font color="black" face="Verdana, Geneva, sans-serif" size="+1">
+<form  method="post">
+ <div class="divInput">
+   <label for="firstname" class="labelInput">First Name:</label>
+   <input type="text" name="firstname" id="firstname" size="30" required>
+ </div><br>
+ <div class="divInput">
+   <label for="lastname" class="labelInput">Last Name:</label>
+   <input type="text" name="lastname" id="lastname" size="30" required>
+ </div>
+ <div class="divInput">
+   <label for="birthday" class="labelInput">Birth Date:</label>
+   <input type="date" name="birthday" id="birthday" required>
+ </div>
+ <div class="divInput">
+   <label for="gender" class="labelInput">Gender:</label>
+   <input type="radio" id="genderM" name="gender" value="Male"> Male,
+  <input type="radio" id="genderF" name="gender" value="Female"> Female,
+  <input type="radio" id="genderO" name="gender" value="Other" checked> Other.
+ </div>
+ <div class="divInput">
+   <label for="phone" class="labelInput">Phone Number:</label>
+   <input type="tel" id="phone" name="phone" size="30" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}|[0-9]{10}" placeholder="xxx-xxx-xxxx">
+ </div>
+ <div class="divInput">
+   <label for="email" class="labelInput">Email:</label>
+   <input type="email" name="email" id="email"  size="30"> <br>
+ </div>
+ 
+ <div class="divInput">
+   <label for="message" class="labelInput">Message:</label><br>
+   <textarea type="textarea" id="message" name="message" rows="5" cols="80"> type your message here ... </textarea>
+ </div>
+ 
+ <p><input type="submit" value="Send Message" class="block"></p>
+  
+</from>
+
+</font>
+</div>
+
+</center>
+</body>
+</html>
