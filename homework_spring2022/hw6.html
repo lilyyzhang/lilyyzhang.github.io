@@ -1,0 +1,192 @@
+<html>
+<head>
+<title>Homework #6</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+<style>
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th:nth-child(1),td:nth-child(1) {
+  background-color: AliceBlue;
+}
+  
+th:nth-child(2),td:nth-child(2) {
+  background-color: Coral ;
+}
+th:nth-child(3),td:nth-child(3) {
+  background-color: LemonChiffon;
+}
+th:nth-child(4),td:nth-child(4) {
+  background-color: DarkOliveGreen;
+}
+
+th:nth-child(5),td:nth-child(5) {
+  background-color: LightCyan;
+}
+th:nth-child(6),td:nth-child(6) {
+  background-color: Magenta;
+}
+th:nth-child(7),td:nth-child(7) {
+  background-color: Lavender;
+}
+th:nth-child(8),td:nth-child(8) {
+  background-color: GreenYellow;
+}
+
+ul.a {
+  list-style-type: circle;
+}
+
+ul.b {
+  list-style-type: square;
+}
+
+ol.c {
+  list-style-type: upper-roman;
+}
+
+ol.d {
+  list-style-type: lower-alpha;
+}
+</style>
+</head>
+<body>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+<center>
+<h3> Homework #6 </h3>
+<div style="width:60%">
+<h4>Create a family introduction page with a navigation bar/dropdown/photo-gallery. List each person's name and photo.
+Restyle the page with css to make it look nice.</h4>
+</div>
+</center>
+<hr>
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Gallery</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="img/Lily_00.jpg">Lily</a>
+    <a href="img/LilyIan_02.jpg">Lily and Ian</a>
+    <a href="img/Family_01.jpg">Family</a> 
+	<a href="img/Cat01.jpg">Charlie</a>
+	
+  </div>
+</div>
+
+<center>
+<div class="gallery">
+  <a target="_blank" href="img/Lily_00.jpg">
+    <img src="img/Lily_00.jpg" alt="Lily Zhang at the City Center of Newport News" width="600" height="400">
+  </a>
+  <div class="desc">Lily Zhang at the City Center of Newport News</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img/LilyIan_02.jpg">
+    <img src="img/LilyIan_02.jpg" alt="Lily and Ian" height="800">
+  </a>
+  <div class="desc">Lily and Ian at New River Gorge Bridge in West Virginia.</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img/Family_01.jpg">
+    <img src="img/Family_01.jpg" alt="Mom and Dad" width="600" height="400">
+  </a>
+  <div class="desc">Parents at New River Gorge Bridge in West Virginia.</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img/Cat01.jpg">
+    <img src="img/Cat01.jpg" alt="Charlie cat" width="600" height="400">
+  </a>
+  <div class="desc">Cat wrapped in a blanket.</div>
+</div>
+
+</center>
+</body>
+</html>
