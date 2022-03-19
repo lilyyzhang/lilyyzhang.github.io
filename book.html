@@ -1,9 +1,36 @@
 <html>
 <head>
-	<title>Book</title>
+	<title>Reading</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
+<style>
+body {
+  counter-reset: books;
+}
+
+h3::before {
+  counter-increment: books;
+  content: "Series " counter(books) ": ";
+  color:darkblue;
+}
+
+h3 {
+  color: RebeccaPurple;
+  background-color: LightGoldenrodYellow;
+}
+
+</style>
 <body>
-  lily zhang, book
+  
+<h2>I love a lot of book series. Right now I'm currently reading Warriors.
+ Warriors is a series about four clans of cats that live in the wild defending
+ for their clans. It's a very interesting series and it's very realistic.(It has some drama too.) </h2>
+
+<h3>Warriors series (Erin Hunter)</h3>
+<h3>Whatever After series (Sarah Mlynowsky)</h3>
+<h3>Humphrey series (Betty G. Birney) </h3>
+<h3>Cam Jansen Series (David A. Adler) </h3>
+
+
 </body>
 </html>
