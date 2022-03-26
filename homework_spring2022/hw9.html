@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>Homework #9</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+div {
+  background-color: lightgreen;
+}
+
+div.a {
+
+  background-color: lightblue;
+  border: 2px solid black;
+}
+div#myDivA {
+  width: 300px;
+  height: 60px;
+  background-color: lightyellow;
+  border: 2px solid black;
+  transform: translate(50px,10px);
+}
+
+div#myDivB {
+  width: 300px;
+  height: 60px;
+  background-color: yellow;
+  border: 2px solid black;
+  transform: rotate(-25deg);
+}
+
+div#myDivC {
+  width: 300px;
+  height: 60px;
+  background-color: grey;
+  border: 2px solid black;
+  transform: matrix(1, -0.3, 0, 1, 0, 0);
+}
+
+div#myDivD {
+  width: 500px;
+  height: 60px;
+  background-color: lightpink;
+  border: 2px solid black;
+  transform: scale(2,3);
+  transform: skew(20deg,10deg);
+}
+
+div.myDivE {
+  width: 300px;
+  height: 100px;
+  background: lightred;
+  border: 2px solid black;
+  transition-property: width;
+  transition-duration: 2s;
+  transition-timing-function: linear;
+  transition-delay: 1s;
+}
+
+div.myDivE:hover {
+  width: 600px;
+}
+
+div.myDivF {
+  width: 100px;
+  height: 60px;
+  position: relative;
+  background-color: red;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes example {
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:200px; top:0px;}
+  50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+</style>
+</style>
+<center>
+<h3> Homework #9 </h3>
+<div style="width:80%">
+<h4>
+	Option 1: Practice transformations/transitions/animations. Make something creative.	<br>
+	Option 2: Practice Tooltip. Create some tooltips for your previous website.
+</h4>
+</div>
+</center>
+<hr>
+<center>
+<div style="width:80%"  class="a">
+
+<p>The translate() Method</p>
+<div id="myDivA">
+This div element is translated by (50px,10px).
+</div>
+<br>
+<hr>
+
+<p>The rotate() Method</p>
+<br>
+<br>
+<div id="myDivB">
+This div element is rotated counter-clockwise with 25 degrees.
+</div>
+<br> 
+<br>
+<hr>
+
+<p>The matrix() Method</p>
+<div id="myDivC">
+This div element is scaled by "transform: matrix(1, -0.3, 0, 1, 0, 0)".
+</div>
+<br>
+<hr>
+
+<p>The scale() and skew() Method</p>
+<div id="myDivD">
+This div element is scaled and skewed by "transform: scale(2,3)" and "transform: skew(20deg,10deg)".
+</div>
+<br>
+<br>
+<hr>
+
+<p>Transition </p>
+<div class="myDivE">
+Hover over this div to see the transition effect:<br>
+  transition-property: width changes from 300px to 600px;<br>
+  transition-duration: 2s;<br>
+  transition-timing-function: linear;<br>
+  transition-delay: 1s;<br>
+</div>
+<hr>
+
+<p>Animation</p>
+The animation-direction property specifies whether an animation should be played forwards, backwards or in alternate cycles. 
+The following example uses the value "alternate" to make the animation run forwards first, then backwards
+<div class="myDivF">
+My moving square
+</div>
+<hr>
+
+</div>
+</center>
+</body>
+</html>
