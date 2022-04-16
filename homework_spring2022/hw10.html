@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Homework #10</title>
+</head>
+<style>
+.img1 {
+  -webkit-box-reflect: right;
+  border: 5px solid #FFFF00;
+}
+ 
+ 
+.mask1 {
+  -webkit-mask-image: url(img/sagsymbol.png);
+  mask-image: url(img/sagsymbol.png);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;    
+}
+
+.mask2 {
+  -webkit-mask-image: radial-gradient(circle, black 30%, rgba(0, 0, 0, 0.3) 30%);
+  mask-image: radial-gradient(circle, black 30%, rgba(0, 0, 0, 0.3) 30%);
+}
+</style>
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<center>
+<h3> Homework #10 </h3>
+<div style="width:60%">
+<h4>Option 1: Update your previous photos, apply either reflection or mask.</h4>
+</div>
+</center>
+<hr>
+<center>
+
+<div style="width:80%">
+<font color="red" face="Verdana, Geneva, sans-serif" size="+1">
+<h3>This is the image with reflection.</h3>
+<img class="img1" src="img/fieldladder.jpg" width="45%"></img>
+<hr>
+
+<h3>An image with a mask layer:</h3>
+<div class="mask2">
+<img src="img/sunsettree.jpg" width="600" height="400">
+</div>
+
+</font>
+</div>
+
+</center>
+</body>
+</html>
