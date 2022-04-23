@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Homework #11</title>
+</head>
+
+<script>
+var counter = 0;
+function myFunction() {
+  counter = counter + 1;
+  document.getElementById("demo").innerHTML = "Hello World " + counter + "!";
+  
+  var remainder = (counter % 5);
+  if(remainder == 0) {
+	if ( counter <= 5 ) {
+	 alert("Congratulations! You have reached 5 clicks!");
+	} else {
+	 alert("Good Job! You have reached another 5 clicks!");
+	}
+  }
+  
+}
+</script>
+
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<center>
+<h3> Homework #11 </h3>
+<div style="width:60%">
+<h4>Option 2: Print out a hello world + a number using Javascript 
+ (directly on the page or print the value for an innerHTML of a tag or using Alert box).</h4>
+</div>
+</center>
+<hr>
+<center>
+
+<div style="width:80%">
+<font color="red" face="Verdana, Geneva, sans-serif" size="+1">
+
+<p > Click the button at least 5 times to see what will happen. </p>
+
+<button onclick="myFunction()">Click ME!</button>
+
+<p id="demo"> this is my hello world spaceholder </p>
+
+
+</font>
+</div>
+
+</center>
+</body>
+</html>
