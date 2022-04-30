@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Homework #12</title>
+</head>
+
+<script>
+
+function $(id) {
+	return document.getElementById(id);
+}
+
+function myFunction() {
+  //use *1.0 to convert the value from string to a number,   parseFloat() also works...
+  var x = $("x").value * 1.0;
+  var y = $("y").value * 1.0;
+  var z = $("z").value * 1.0;
+  var val = x*(y + x + y)/z; 
+  //alert("x="+x + " y="+y + " z="+z +" val="+val);
+  $("result").value = val;
+}
+</script>
+
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<center>
+<h3> Homework #12 </h3>
+<div style="width:60%">
+<h4>Option 2: Do a simple math, for example print out the value of x* (y + x + y)/z, while x=2, y=3, z=5</h4>
+</div>
+</center>
+<hr>
+<center>
+
+<div style="width:80%">
+<font color="red" face="Verdana, Geneva, sans-serif" size="+1">
+<label for="x">x =</label>
+<input type="text" id="x" name="x" value=2><br><br>
+<label for="y">y =</label>
+<input type="text" id="y" name="y" value=3><br><br>
+<label for="z">z =</label>
+<input type="text" id="z" name="z" value=5><br><br>
+  
+<p > Type in your x,y,z values in the boxes above. </p>
+
+<button onclick="myFunction()">Click me to see result!</button> <br><br>
+
+<label for="result">x* (y + x + y)/z =</label>
+<input type="text" id="result" name="result" value=? readonly><br><br>
+
+
+</font>
+</div>
+
+</center>
+</body>
+</html>
