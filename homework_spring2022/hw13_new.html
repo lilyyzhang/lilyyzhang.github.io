@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Homework #12</title>
+</head>
+
+<script>
+
+function $(id) {
+	return document.getElementById(id);
+}
+
+function showinputs() {
+	const inputs = ["x", "y", "z"];
+	var item;
+	var text = "";
+	for (i in inputs) {
+		text +=  inputs[i] + " = " + $(inputs[i]).value+ "; \r";
+	}
+	$("result2").value = text;
+}
+
+
+function myFunction() {
+	var sum=0;
+	var i;
+	for(i=1; i<=1000; i++) {
+		sum += i;
+	}
+	$("result1").value = sum;
+    
+	showinputs();
+	
+	var j=1;
+	var product=1;
+	while (j<=100) {
+	    product = product * j;
+		j++;
+	}
+	$("result3").value = product;
+}
+</script>
+
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<center>
+<h3> Homework #13 </h3>
+<div style="width:60%">
+<h4>Option 1: practice For Loop</h4>
+<h4>Option 1: practice For In</h4>
+<h4>Option 1: practice While Loop</h4>
+</div>
+</center>
+<hr>
+<center>
+
+<div style="width:80%">
+<font color="red" face="Verdana, Geneva, sans-serif" size="+1">
+<label for="y">starting value: </label>
+<input type="text" id="x" name="x" value=1><br><br>
+<label for="x">sum from "starting value" up to this value: </label>
+<input type="text" id="y" name="y" value=3><br><br>
+<label for="z">multiply  from "starting value" up to this value:</label>
+<input type="text" id="z" name="z" value=100><br><br>
+  
+
+<p> Use for loop to calculate sum. Use for in to print user's input values. Use while loop to calculate product. </p>
+
+<button onclick="myFunction()">Click me to see result!</button> <br><br>
+
+<label for="result1">sum =</label>
+<input type="text" id="result1" name="result1" value=? readonly><br><br>
+
+<label for="result2">These are the user's input values:</label>
+<input type="textarea" id="result2" name="result2" value=? readonly><br><br>
+
+<label for="result3">product =</label>
+<input type="text" id="result3" name="result3" value=? readonly><br><br>
+
+</font>
+</div>
+
+</center>
+</body>
+</html>
