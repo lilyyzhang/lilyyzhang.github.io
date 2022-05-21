@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Homework #15</title>
+</head>
+
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<center>
+<h3> Homework #15 </h3>
+<div style="width:60%">
+<h5>1. What is a class is and what is an object in JS?</h5>
+<h5>2. Create any JS object to describe something. For example, define an object of flowers/fruits/birds/dogs/cats.
+ Define some properties and methods.</h5>
+</div>
+</center>
+<hr>
+<center>
+
+<div style="width:80%">
+<font color="red" face="Verdana, Geneva, sans-serif" size="+1">
+<p>1. In JS, an object is one type of varible, which contains many values. A class is a template for creating objects.</p>
+<p>Click on the droplist to see the image of the top 10 smartest dog breeds.</p>
+<label for="cars">Choose a dog breed:</label>
+
+<select name="dogs" id="dogs" onchange="changepicture()">
+  <option value="1">Border Collie</option>
+  <option value="2">Poodle</option>
+  <option value="3">German Shepherd</option>
+  <option value="4">Golden Retriever</option>
+  <option value="5">Doberman Pinscher</option>
+  <option value="6">Shetland Sheepdog</option>
+  <option value="7">Labrador Retriever</option>
+  <option value="8">Papillon</option>
+  <option value="9">Rottweiler</option>
+  <option value="10">Australian Cattle Dog</option>
+</select>
+<p></p>
+<img id="demo" name="demo" src="" width="500"></img>
+<p  id="dogbreed" name="dogbreed"></p>
+</font>
+</div>
+
+<script>
+
+const top10dogs = {
+	N1:"border_collie",
+	N2:"poodle",
+	N3:"german_shepherd",
+	N4:"golden_retriever",
+	N5:"doberman_pinscher",
+	N6:"Shetland_sheepdog",
+	N7:"labrador_retriever",
+	N8:"papillion",
+	N9:"rottweiler",
+	N10:"austrailian_cattle_dog"
+};
+
+function $(id) {
+	return document.getElementById(id);
+}
+
+function changepicture() {
+  var val = $("dogs").value;
+  var breed = top10dogs["N"+val];
+ 
+  var url = "img/dogs/"+top10dogs["N"+val]+".jpg";
+  //alert(url);
+  
+  $("dogbreed").innerHTML = breed;
+  $("demo").src = url;
+  
+}
+</script>
+
+</center>
+</body>
+</html>
