@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Homework #16</title>
+</head>
+
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: #7CFC00;
+}
+#animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: #8B008B;
+}
+</style>
+<center>
+<h3> Homework #16 </h3>
+<div style="width:60%">
+<h5>1. What is Html DOM and how do you use JS to interact with DOM?</h5>
+<h5>2. Play around with the game example on the previous slide, try to modify a piece of it (by using CSS, Html, or JS).</h5>
+</div>
+</center>
+<hr>
+<center>
+
+<div style="width:80%">
+<font color="black" face="Verdana, Geneva, sans-serif" size="+1">
+<p>1. The Document Object Model (DOM) is a programming API for HTML and XML documents.
+ It defines the logical structure of documents and the way a document is accessed and manipulated.<br>
+ We can use JS to call methods of a DOM, or change it's properties.</p>
+
+<p>2. Here, you can change the vertical speed of the animation block using JS.</p>
+<p>
+<label for="Vy">set vertical speed</label>
+<input type="text" id="Vy" name="Vy" value=1 size="6">
+<button onclick="myMove()" style="width:100px;background-color:limegreen">Go</button>
+</p> 
+
+<div id ="container">
+  <div id ="animate"></div>
+</div>
+
+<script>
+function myMove() {
+  let id = null;
+  let Vy = document.getElementById("Vy").value; 
+  
+  const elem = document.getElementById("animate");   
+  let posX = 0;
+  let posY = 0;
+  let dirY = 1;
+  clearInterval(id);
+  id = setInterval(frame, 5);
+  function frame() {
+    if (posX == 350) {
+      clearInterval(id);
+    } else {
+      posX++; 
+	  posY = posY + Vy*dirY;
+	  if (posY >= 350 || posY <= 0)  dirY = dirY*(-1); 
+      elem.style.left = posX + "px"; 
+      elem.style.top = posY + "px"; 
+    }
+  }
+}
+</script>
+</center>
+</body>
+</html>
