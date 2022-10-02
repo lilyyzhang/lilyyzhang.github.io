@@ -161,22 +161,15 @@ var gBoard_expert2 = [
   ,0,0,0,8,0,0,3,0,6
 ];
 
-var gBoard = [
-   5,1,0,9,2,0,0,7,0
-  ,3,6,0,0,5,0,0,0,0
-  ,0,0,0,0,4,0,0,0,0
-  ,0,0,0,0,0,0,0,0,0
-  ,6,0,0,0,0,0,5,4,0
-  ,0,8,2,7,0,0,0,9,0
-  ,0,0,0,0,0,0,0,0,9
-  ,0,0,8,0,0,4,0,0,0
-  ,0,0,0,8,0,0,3,0,6
-];
-
 //=========================================================================================
+var gBoard = new Array(81);
+for (let i = 0; i < gBoard.length; i++) {
+  gBoard[i] = 0;
+}
+
 //this variable is to store the status of each cell
 //0 = not available, 1 = available
-var gCellStatus = [];
+var gCellStatus = new Array(81);
 
 //this array gCandidate[81][10] is used to store the candidate of each cell, the first position is the number of candidates
 //for example, a candidate[i][0] means the number of candidates for cell i
@@ -462,8 +455,8 @@ function buildTable()
       table.appendChild(td);
     }
   }
-
   $("tableContainer").appendChild(table);
+
   addEvents();
   initBoard(gBoard_expert2);
 }
@@ -745,6 +738,40 @@ function tryValueAuto()
   }  
 }
 
+function addFloorMsg(msg)
+{
+  var line = document.createElement("p");
+  line.setAttribute("id","msgFloor"+gCurFloor+"-"+gFloorCandidateIndex[gCurFloor]);
+  let text = "|";
+  for (let i=0; i<gCurFloor; i++) {
+    text += "--";
+  }
+  text += msg;
+  line.innerHTML = text;
+  $("floormsgcontainer").appendChild(line);
+  log(text);
+}
+
+function updateFloorMsg(msg)
+{
+  var line = $("msgFloor"+gCurFloor+"-"+gFloorCandidateIndex[gCurFloor]);
+  let text = "|";
+  for (let i=0; i<gCurFloor; i++) {
+    text += "--";
+  }
+  text += msg;
+  line.innerHTML = text;
+  log(text);
+}
+
+function deleteFloorMsg(floor)
+{
+  var line = $("msgFloor"+floor);
+  line.remove();
+  log("remove msgFloor"+floor);
+}
+
+
 //find the cell that has the minimum number of candidates, and try one of the candidates in this cell
 //then determine if it the board can be solved or not. if it can, it is the right value, otherwise it is not
 function trialAndError()
@@ -782,17 +809,27 @@ function trialAndError()
     gCurFloor++;
     gFloorCandidateIndex[gCurFloor]=0;
     gFloorCell[gCurFloor] = idx;
-    log('trialAndError(): create a new floor('+gCurFloor+'), cellIdx='+idx+', candidateIdx('+gFloorCandidateIndex[gCurFloor]+')');
+    log('trialAndError(): create a new floor('+gCurFloor+'), cellIdx('+idx+'), candidateIdx('+gFloorCandidateIndex[gCurFloor]+')');
+
+    //append to the floor message bar
+    addFloorMsg('floor('+gCurFloor+'), cellIdx=('+idx+'), candidateIdx('+gFloorCandidateIndex[gCurFloor]+')');
   }
   else {
     if(gFloorCandidateIndex[gCurFloor] < gCandidate[idx][0]-1) {
+      
+      updateFloorMsg('floor('+gCurFloor+'), cellIdx=('+idx+'), candidateIdx('+gFloorCandidateIndex[gCurFloor]+') <-- wrong trial');
+
       //this is the same floor, try next candidates
       gFloorCandidateIndex[gCurFloor]++;
-      log('trialAndError(): current floor='+gCurFloor+' cellIdx='+idx+', try next candidateIdx('+gFloorCandidateIndex[gCurFloor]+')');
+      log('trialAndError(): current floor='+gCurFloor+' cellIdx('+idx+'), try next candidateIdx('+gFloorCandidateIndex[gCurFloor]+')');
+      
+      //append the floor message bar
+      addFloorMsg('floor('+gCurFloor+'), cellIdx=('+idx+'), candidateIdx('+gFloorCandidateIndex[gCurFloor]+')');
     }
     else {
       //all candidates of this cell has been verified as 'wrong answer', need to go back to previous floor
       //reset buffer this floor
+      //deleteFloorMsg(gCurFloor);   //I want to keep all the trials in the floor message bar
       gFloorCell[gCurFloor] = -1;
       gFloorCandidateIndex[gCurFloor] = -1; 
       gCurFloor--;
@@ -937,7 +974,11 @@ function solveAll()
       <input type="button" id="btn9" onclick="tryValueN(9)" value="9" style="width: 50px; border: 1px solid black;">
       <p id="msg2">log bar:</p>
       <input type="button" onclick="solveOneStep()" value="solve one step" style="width: 220px; border: 1px solid black;">
-      <input type="button" onclick="solveAll()" value="solve all" style="width: 220px; border: 1px solid black;">
+      <input type="button" onclick="solveAll()" value="solve all" style="width: 220px; border: 1px solid black;">      
+    </div>
+    <p></p>
+    <div class="container" id="floormsgcontainer">
+      <p id=floormsgbar">floor message bar:</p>
     </div>
   </body>
 </html>
