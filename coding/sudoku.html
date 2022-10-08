@@ -74,9 +74,10 @@
         transform: translateY(2px);
       }
 
-      .button1 {width: 80px;}
-      .button2 {width: 100px;}
-      .button3 {width: 150px;}
+      .button_w80 {width: 80px;}
+      .button_w100 {width: 100px;}
+      .button_w150 {width: 100px;}
+      .button_w220 {width: 220px;}
 
       #cell-0,  #cell-1,  #cell-2  { border-top:    2px solid #000000; }
       #cell-2,  #cell-11, #cell-20 { border-right:  2px solid #000000; }
@@ -986,21 +987,69 @@ function convert2DArrayTo1D(board2D)
   return board1D;
 }
 
+
+//randomly generate an int from 0 to N (including N)
+function randomN(N)
+{
+  let v = parseInt(Math.random()*10*N)%(N+1);
+  return v;
+}
+
+//rotate by 90 deg, or invert X-Y to Y-X
+function  invert2DArray(board2D)
+{
+  ;
+}
+
+//randomly pick a 3-row-group, throw 2 distinct numbers randomly then swap these 2 rows 
+function shuffleRows(board2D)
+{
+  ;
+}
+
+//randomly pick a 3-column group, throw 2 distinct numbers randomly then swap these 2 columns 
+function shuffleColumns(board2D)
+{
+  ;
+}
+
+//throw 2 distinct numbers randomly then swap these 2 3-row-groups 
+function shuffleRowGroups(board2D)
+{
+  ;
+}
+
+//throw 2 distinct numbers randomly then swap these 2 3-column-groups 
+function shuffleColumnGroups(board2D)
+{
+  ;
+}
+
+
+//render a board using a seed array
 function renderBoard(diffculty) 
 {
+  //create 2D array which is easy for invert or shuffle
   var board2D;  
   if(diffculty==1) board2D = convert1DArrayTo2D(gBoard_easy);
   else if(diffculty==2) board2D = convert1DArrayTo2D(gBoard_medium);
   else if(diffculty==3) board2D = convert1DArrayTo2D(gBoard_hard);
   else board2D = convert1DArrayTo2D(gBoard_expert);
 
-  //rotate by 90 deg
+  //rotate by 90 deg, or invert X-Y to Y-X
+  //todo:  define function  invert2DArray(board2D);
+  if(randomN(1)) invert2DArray(board2D);
 
-  //swap rows inside 3-row-group or 3-column-group
+  //Shuffle Rows and Columns within the same group
+  //Shuffle rows inside 3-row-group or collumn inside 3-column-group
+  if(randomN(1)) shuffleRows(board2D);
+  if(randomN(1)) shuffleColumns(board2D);
 
   //swap 3-row-groups or 3-column-groups
-  var board1D = convert2DArrayTo1D(board2D);
+  if(randomN(1)) shuffleRowGroups(board2D);
+  if(randomN(1)) shuffleColumnGroups(board2D);
 
+  var board1D = convert2DArrayTo1D(board2D);
   updateBoardByArray(board1D);
 }
 
@@ -1012,16 +1061,16 @@ function renderBoard(diffculty)
       
       <h1>HTML Sudoku Board</h1>
       <b>New Game:</b>
-      <button class="button button1" onclick="renderBoard(1)">Easy</button>
-      <button class="button button2" onclick="renderBoard(2)">Medium</button>
-      <button class="button button1" onclick="renderBoard(3)">Hard</button>
-      <button class="button button2" onclick="renderBoard(4)">Expert</button>
+      <button class="button button_w80" onclick="renderBoard(1)">Easy</button>
+      <button class="button button_w100" onclick="renderBoard(2)">Medium</button>
+      <button class="button button_w80" onclick="renderBoard(3)">Hard</button>
+      <button class="button button_w100" onclick="renderBoard(4)">Expert</button>
       <p></p>
     </div>
     <div class="container">      
       <p  id="msgbar">message bar:</p>
-      <input type="button" class="button" onclick="updateByCandidateAuto()" value="by candidate" style="width: 220px; border: 1px solid black;">
-      <input type="button" class="button" onclick="tryValueAuto()" value="try value" style="width: 220px; border: 1px solid black;">
+      <button class="button button_w220" onclick="updateByCandidateAuto()">by candidate</button>
+      <button class="button button_w220" onclick="tryValueAuto()">try value</button>
       <p></p>
       <p>click on these botton to try value n</p>
       <input type="button" id="btn1" onclick="tryValueN(1)" value="1" style="width: 50px; border: 1px solid black;">
@@ -1034,8 +1083,8 @@ function renderBoard(diffculty)
       <input type="button" id="btn8" onclick="tryValueN(8)" value="8" style="width: 50px; border: 1px solid black;">
       <input type="button" id="btn9" onclick="tryValueN(9)" value="9" style="width: 50px; border: 1px solid black;">
       <p id="msg2">log bar:</p>
-      <input type="button" class="button" onclick="solveOneStep()" value="solve one step" style="width: 220px; border: 1px solid black;">
-      <input type="button" class="button" onclick="solveAll()" value="solve all" style="width: 220px; border: 1px solid black;">      
+      <button class="button button_w220" onclick="solveOneStep()">solve one step"</button>
+      <button class="button button_w220" onclick="solveAll()">solve all</button>
     </div>
     <p></p>
     <div class="container" id="floormsgcontainer">
