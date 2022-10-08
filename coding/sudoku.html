@@ -32,6 +32,7 @@
         text-align: center;
         width: 48px;
         height: 48px;
+        size:2;
         font-size: 24px;
         background-color:  #EEEEEE;
         outline: none;
@@ -49,19 +50,33 @@
         background-color: #EEEEEE;
       }
 
-      .input.button{
+      .button {
         vertical-align: middle;
         font-family: "Lucida Grande", Geneva, Verdana, Arial, Helvetica, sans-serif;
-        font-size: 13px;
-        font-weight: bold;
-        text-transform: none;
-        border: 1px solid transparent;
-        background-color: #426399;
+        padding: 5px 5px;
+        font-size: 18px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #fff;
+        background-color: #04AA6D;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 5px #999;
+        height: 35px;
       }
 
-      .input.button:hover {
-        background-color: rgb(74, 29, 146);
+      .button:hover {background-color: #3e8e41}
+
+      .button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 3px #666;
+        transform: translateY(2px);
       }
+
+      .button1 {width: 80px;}
+      .button2 {width: 100px;}
+      .button3 {width: 150px;}
 
       #cell-0,  #cell-1,  #cell-2  { border-top:    2px solid #000000; }
       #cell-2,  #cell-11, #cell-20 { border-right:  2px solid #000000; }
@@ -125,7 +140,7 @@ var gBoard_easy = [
   ,0,7,3,4,0,0,0,9,0
   ];
 
-var gBoard_hard = [
+var gBoard_medium = [
    0,0,0,5,8,0,4,7,0
   ,6,0,0,0,0,0,9,5,0
   ,2,0,0,0,0,0,0,0,0
@@ -137,7 +152,7 @@ var gBoard_hard = [
   ,0,8,0,0,9,0,0,0,6
   ];
 
-var gBoard_expert = [
+var gBoard_hard = [
    5,1,0,9,2,0,0,7,0
   ,3,6,0,0,5,0,0,0,0
   ,0,0,0,0,4,0,0,0,0
@@ -149,7 +164,7 @@ var gBoard_expert = [
   ,0,0,0,8,0,0,3,0,6
   ];
 
-var gBoard_expert2 = [
+var gBoard_expert = [
    5,1,0,9,0,0,0,7,0
   ,3,6,0,0,5,0,0,0,0
   ,0,0,0,0,4,0,0,0,0
@@ -458,7 +473,7 @@ function buildTable()
   $("tableContainer").appendChild(table);
 
   addEvents();
-  initBoard(gBoard_expert2);
+  initBoard(gBoard_expert);
 }
 
 function findCellCandidates(cellid) 
@@ -948,6 +963,46 @@ function solveAll()
   }  
 }
 
+function convert1DArrayTo2D(board1D)
+{
+  var board2D = new Array(9);
+  for(let i=0;i<9;i++) {
+    board2D[i] = new Array(9);
+    for(let j=0;j<9;j++) {
+      board2D[i][j] = board1D[i*9+j];
+    }
+  }
+  return board2D;
+}
+
+function convert2DArrayTo1D(board2D)
+{
+  var board1D = new Array(81);
+  for(let i=0;i<9;i++) {
+    for(let j=0;j<9;j++) {
+      board1D[i*9+j] = board2D[i][j];
+    }
+  }
+  return board1D;
+}
+
+function renderBoard(diffculty) 
+{
+  var board2D;  
+  if(diffculty==1) board2D = convert1DArrayTo2D(gBoard_easy);
+  else if(diffculty==2) board2D = convert1DArrayTo2D(gBoard_medium);
+  else if(diffculty==3) board2D = convert1DArrayTo2D(gBoard_hard);
+  else board2D = convert1DArrayTo2D(gBoard_expert);
+
+  //rotate by 90 deg
+
+  //swap rows inside 3-row-group or 3-column-group
+
+  //swap 3-row-groups or 3-column-groups
+  var board1D = convert2DArrayTo1D(board2D);
+
+  updateBoardByArray(board1D);
+}
 
 </script>
 
@@ -956,12 +1011,18 @@ function solveAll()
     <div id="tableContainer" class="container">
       
       <h1>HTML Sudoku Board</h1>
-
+      <b>New Game:</b>
+      <button class="button button1" onclick="renderBoard(1)">Easy</button>
+      <button class="button button2" onclick="renderBoard(2)">Medium</button>
+      <button class="button button1" onclick="renderBoard(3)">Hard</button>
+      <button class="button button2" onclick="renderBoard(4)">Expert</button>
+      <p></p>
     </div>
     <div class="container">      
       <p  id="msgbar">message bar:</p>
-      <input type="button" onclick="updateByCandidateAuto()" value="by candidate" style="width: 220px; border: 1px solid black;">
-      <input type="button" onclick="tryValueAuto()" value="try value" style="width: 220px; border: 1px solid black;">
+      <input type="button" class="button" onclick="updateByCandidateAuto()" value="by candidate" style="width: 220px; border: 1px solid black;">
+      <input type="button" class="button" onclick="tryValueAuto()" value="try value" style="width: 220px; border: 1px solid black;">
+      <p></p>
       <p>click on these botton to try value n</p>
       <input type="button" id="btn1" onclick="tryValueN(1)" value="1" style="width: 50px; border: 1px solid black;">
       <input type="button" id="btn2" onclick="tryValueN(2)" value="2" style="width: 50px; border: 1px solid black;">
@@ -973,8 +1034,8 @@ function solveAll()
       <input type="button" id="btn8" onclick="tryValueN(8)" value="8" style="width: 50px; border: 1px solid black;">
       <input type="button" id="btn9" onclick="tryValueN(9)" value="9" style="width: 50px; border: 1px solid black;">
       <p id="msg2">log bar:</p>
-      <input type="button" onclick="solveOneStep()" value="solve one step" style="width: 220px; border: 1px solid black;">
-      <input type="button" onclick="solveAll()" value="solve all" style="width: 220px; border: 1px solid black;">      
+      <input type="button" class="button" onclick="solveOneStep()" value="solve one step" style="width: 220px; border: 1px solid black;">
+      <input type="button" class="button" onclick="solveAll()" value="solve all" style="width: 220px; border: 1px solid black;">      
     </div>
     <p></p>
     <div class="container" id="floormsgcontainer">
