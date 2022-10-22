@@ -1069,7 +1069,7 @@ function randomPairN(N)
 function  invert2DArray(board2D)
 {
   for (let i = 0; i < 9; i++) {
-    for (let j = i; j < 9; j++) {
+    for (let j = i+1; j < 9; j++) {
       log("invert2DArray() swap ["+i+"]["+j+"]: before A="+board2D[i][j]+" B="+board2D[j][i]);
       let tmp = board2D[i][j];
       board2D[i][j] = board2D[j][i];
